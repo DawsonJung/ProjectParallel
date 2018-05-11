@@ -25,13 +25,13 @@ def LookForSpot():
 		backWheels.forward()
 		backWheels.speed = forward_speed
 		distance = ua.get_distance()
-		if (distance < 25):
+		if (distance < 20):
 			start = True
 		if (start == True):
 			print "Obstacle"
 			time.sleep(0.2)
 			distance = ua.get_distance()
-			if (distance > 21):
+			if (distance > 20):
 				obstacleEnd = True
 				
 			while (obstacleEnd == True):
@@ -39,13 +39,14 @@ def LookForSpot():
 				time.sleep(0.1)
 				distance = ua.get_distance()
 				timer += 1
-				if (distance < 20):
+				if (distance < 50):
 					obstacleEnd = False
 					print "New Obstacle"
 				print "Distance %scm" % distance
 		if (timer > 7):
 			found = True
 		else:
+			start = False
 			continue
 	backWheels.stop()
 	print "SPOT FOUND"
@@ -89,7 +90,7 @@ def ParktheBatmobile():
 	frontWheels.turn_straight()
 	backWheels.forward()
 	backWheels.speed = forward_speed
-	time.sleep(0.5)
+	time.sleep(0.4)
 	backWheels.stop()	
 	
 
